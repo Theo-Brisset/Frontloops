@@ -2,13 +2,17 @@
 <html>
 <head>
     <title>Boiling dots</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="boilingDots.js"></script>
+    
 </head>
 <body>
-    <!--
-        Build a component that has a text input with a submit button.
-        Whenever you enter a number and submit it - an animated boiling circle with timer is added to the component.
-        Once timer expires - circle should "pop".
-        Several timers can be set at the same time.
-    -->
+    <script>
+        var newTimer
+        window.addEventListener("load", function(){
+            newTimer = new boilingDots();
+            newTimer.initialize();
+        })
+    </script>
 </body>
 </html>
