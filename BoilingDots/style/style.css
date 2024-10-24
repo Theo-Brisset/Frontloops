@@ -4,7 +4,57 @@ body{
 
 section{
     background-color: white;
-    width:50vw;
+    width:40vw;
     height: 30vh;
     margin:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left:50px;
+    border-radius: 10px;
+}
+
+form{
+    display: flex;
+    gap:30px;
+}
+
+form input{
+    border-color:#4b7aed;
+    border-style: solid;
+    max-width: 80px;
+}
+
+form button{
+    background-color: #4b7aed;
+    color:white;
+    font-weight: 800;
+    border:none;
+    border-radius: 10px;
+    height: 50px;
+    width: 60px;
+}
+
+div.conteneurTimer{
+    min-height:100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin: 30px;
+    gap:20px;
+    width:90%
+}
+
+div.timer{
+    border-radius: 50%;
+    background-color: orange;
+    color:white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 48px;
+    font-weight: 800;
+}
+
+.hidden{
+    display:none;
 }

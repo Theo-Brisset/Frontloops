@@ -5,9 +5,8 @@ function boilingDots(){
     self.interval;
     
     self.initialize = function(){
-        console.log("hello");
         self.createSection();
-
+        
     }
 
     self.createSection = function (){
@@ -20,11 +19,12 @@ function boilingDots(){
         var form = document.createElement('form')
 
         var timerContainerDiv = document.createElement('div')
+        timerContainerDiv.classList.add('conteneurTimer')
 
         //Créer l'input
         var input = document.createElement('input')
         input.setAttribute('type', 'number')
-        input.setAttribute('placeholder', 'Enter number of seconds')
+        input.setAttribute('placeholder', 'Seconds')
         
         
         //Créer le button
@@ -35,8 +35,11 @@ function boilingDots(){
         button.addEventListener('click', function(event){
             event.preventDefault();
             let launchTimer = new timer()
-            launchTimer.launchCounter(input.value)
+            
+            let timerDiv = launchTimer.timerPresentation(input.value);
+            timerContainerDiv.appendChild(timerDiv);
 
+            launchTimer.launchCounter(input.value, timerDiv);
         })
         
         
@@ -44,17 +47,9 @@ function boilingDots(){
         form.appendChild(button)
 
         section.appendChild(form)
+        section.appendChild(timerContainerDiv)
 
         body.appendChild(section);
-    }
-
-
-    self.displayTimer = function(){
-
-        var timerDiv = document.createElement('div')
-        timerDiv.classList.add('timer')
-        timerDiv.textContent
-
     }
 
 }
@@ -62,13 +57,27 @@ function boilingDots(){
 function timer(){
 
     var self = this;
+
+    self.timerPresentation = function(startNumber){
+        let timerDiv = document.createElement('div');
+        timerDiv.classList.add('timer');
+        timerDiv.textContent = startNumber;
+
+        return timerDiv
+    }
     
-    self.launchCounter = function(number){
-        self.delay = 1000 * number;
+    self.launchCounter = function(startNumber, timerDiv){
+        var currentNumber = startNumber;
 
-        self.countDown(number)
+        self.interval = setInterval(function() {
+            currentNumber--;
+            timerDiv.textContent = currentNumber; 
 
-        setTimeout(() => self.stopCountDown(), self.delay)
+            if (currentNumber <= 0) {
+                self.stopCountDown(timerDiv);
+            }
+        }, 1000);
+        
     }
 
 
@@ -77,15 +86,13 @@ function timer(){
 
         self.interval = setInterval(function(){
             startNumber--;
-            console.log(startNumber + " secondes comptées");
-
-            return startNumber
         }, 1000);
 
     }
 
-    self.stopCountDown = function() {
+    self.stopCountDown = function(timerDiv) {
         clearInterval(self.interval);
+        timerDiv.classList.add('hidden')
     }
 
 }
