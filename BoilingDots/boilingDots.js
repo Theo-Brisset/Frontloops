@@ -30,7 +30,7 @@ function boilingDots(){
         //Créer le button
         var button = document.createElement('button')
         button.setAttribute('type', 'submit')
-        button.textContent = 'Start !'
+        button.textContent = 'Start boiling !'
 
         button.addEventListener('click', function(event){
             event.preventDefault();
