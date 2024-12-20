@@ -2,11 +2,27 @@
 <html>
 <head>
     <title>Segmented control</title>
+    <link href="design/style.css" rel="stylesheet">
 </head>
 <body>
+    <form>
+        <div>
+            <input type="radio" id="price" name="exemple" value="price" checked>
+            <label for="price">Sort by price</label>
+        </div>
+        <div>
+            <input type="radio" id="name" name="exemple" value="name">
+            <label for="name">Sort by name</label>
+        </div>
+        <div>
+            <input type="radio" id="relevance" name="exemple" value="relevance">
+            <label for="relevance">Sort by relevance</label>
+        </div>
+    </form>
     <!--
         Create a segmented control that turns into a <select> for mobile screens.
         They should sync whenever any of them is changed.
     -->
 </body>
+<script src="change.js"></script>
 </html>
